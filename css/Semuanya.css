@@ -1,0 +1,326 @@
+/* NAVBAR */
+ 
+.navbar {
+       
+    z-index: 1000; 
+}
+
+.navbar-brand .brand-logo {
+    width: 30px; 
+    height: auto;
+    display: inline-block; 
+    vertical-align: middle; 
+}
+
+
+.navbar-brand .brand-text {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.navbar-brand img {
+    width: 70px; 
+    height: auto; 
+    display: inline-block; 
+    vertical-align: middle; 
+}
+
+/* Banner */
+
+.caption {
+    position: relative; 
+    z-index: 10; 
+    margin-top: 100px; /* Increased margin-top value to move it down */
+    text-align: center; /* Ensure it's centered within the caption div */
+}
+
+.caption h2 {
+    margin-top: 40px; /* Increased margin-top value to move it down */
+    margin-bottom: 30px;
+    font-size: 64px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 1px;
+    text-align: center; 
+}
+
+.caption h2 em {
+    font-style: normal;
+    color: #17a2b8;
+    font-weight: 900;
+}
+
+.main-button {
+    text-align: center; 
+}
+
+.scroll-to-section a {
+    color: #fff; 
+    background-color: #17a2b8; 
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+
+/* FOOTER */
+
+
+footer {
+    background-color: #273053;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 0px;
+    padding: 25px 0px;
+    color: #fff;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+footer p a,
+footer p a:hover {
+    color: #0dcaf0;
+}
+
+
+
+/* KONTAK */
+.social-media-section {
+    padding: 20px;
+    background-color: #f0f8ff; /* sepenuhnya transparan */
+
+}
+
+.social-media-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.social-media-card {
+    background: #fff; /* Sesuaikan dengan warna latar belakang yang diinginkan */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.social-media-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.social-media-card img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.social-media-card p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.social-media-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* VISI MISI  */
+
+.visimisi h1, .visimisi h2, .visimisi h4, .visimisi p {
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+/* Coming Soon */
+
+section.coming-soon {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #172238;
+    padding: 120px 0px;
+}
+
+section.coming-soon .continer .counter div {
+  display: inline-block;
+}
+section.coming-soon .continer h4 {
+    margin-top: 100px;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    line-height: 40px;
+    margin-bottom: 50px;
+}
+section.coming-soon .continer h4 em {
+    font-style: normal;
+    color: #0dcaf0;
+}
+
+@media screen and (max-width: 767px) {
+
+  section.coming-soon .continer h4 {
+    text-align: center;
+  }
+
+}
+
+section.coming-soon .continer .counter .days,
+section.coming-soon .continer .counter .hours,
+section.coming-soon .continer .counter .minutes,
+section.coming-soon .continer .counter .seconds {
+  width: 22%;
+  height: 140px;
+  float: left;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  background-color: rgba(250,250,250,0.1);
+}
+@media screen and (max-width: 992px) {
+
+  section.coming-soon .continer .counter .days,
+  section.coming-soon .continer .counter .hours,
+  section.coming-soon .continer .counter .minutes,
+  section.coming-soon .continer .counter .seconds {
+    font-size: 26px;
+  }
+
+  section.coming-soon .continer .counter .days .value,
+  section.coming-soon .continer .counter .hours .value,
+  section.coming-soon .continer .counter .minutes .value,
+  section.coming-soon .continer .counter .seconds .value {
+      margin-top: 40px!important;
+  }
+
+  section.coming-soon .continer .counter span {
+      font-size: 14px!important;
+  }
+
+}
+section.coming-soon .continer .counter .days,
+section.coming-soon .continer .counter .hours,
+section.coming-soon .continer .counter .minutes {
+    margin-right: 4%;
+}
+section.coming-soon .continer .counter .days .value,
+section.coming-soon .continer .counter .hours .value,
+section.coming-soon .continer .counter .minutes .value,
+section.coming-soon .continer .counter .seconds .value {
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+}
+
+section.coming-soon .continer .counter span {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #0dcaf0;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 0px;
+    display: block;
+}
+
+section.coming-soon .right-content {
+    margin-left: 30px;
+}
+
+@media screen and (max-width: 767px) {
+
+  section.coming-soon .right-content {
+      margin-top: 60px;
+      margin-left: 0px;
+  }
+
+}
+
+section.coming-soon .top-content {
+    margin-bottom: -8px;
+}
+
+section.coming-soon .top-content h6 {
+    font-size: 14px;
+    color: #fff;
+    background-color: rgba(250,250,250,0.2);
+    padding: 40px;
+    text-align: center;
+    line-height: 24px;
+}
+
+section.coming-soon .top-content h6 em {
+    font-style: normal;
+    font-weight: 600;
+}
+
+section.coming-soon form {
+    background-color: rgba(250,250,250,0.1);
+    padding: 60px 40px;
+    width: 100%;
+    text-align: center;
+}
+
+section.coming-soon form input {
+    width: 100%;
+    height: 40px;
+    background-color: rgba(250,250,250,0.1);
+    border-radius: 0px;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 13px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+section.coming-soon form input:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    background-color: rgba(250,250,250,0.1);
+}
+
+section.coming-soon form::placeholder { color: #fff }
+section.coming-soon form input::placeholder { color: #fff; }
+section.coming-soon form input::placeholder { color: #fff; }
+
+section.coming-soon form button {
+    margin-top: 10px;
+    background-color: #0dcaf0;
+    color: #fff;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    padding: 12px 20px;
+    display: inline-block;
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+
+
+
+
+
