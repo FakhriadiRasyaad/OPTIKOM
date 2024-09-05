@@ -324,3 +324,76 @@ section.coming-soon form button {
 
 
 
+.speakers-thumb {
+    position: relative;
+    width: 100%; /* Lebar 100% dari kontainer atau kolom */
+    padding-top: 50%; /* Menetapkan tinggi menjadi 2 kali lebar (rasio 1:2) */
+    overflow: hidden; /* Memastikan bagian gambar yang keluar kontainer terpotong */
+}
+
+.speakers-thumb img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Gambar akan mengisi kontainer dengan rasio 1x2 */
+}
+
+@media (max-width: 767px) {
+    .hero h2 {
+        font-size: 24px; /* Ukuran font untuk mobile */
+    }
+}
+
+
+/* kegiatan */
+.features { 
+    gap: 30px;
+    padding: 50px;
+    background-color: fff; 
+  }
+  
+  .feature-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .feature-item .text {
+    color: white;
+  }
+  
+  .feature-item h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .feature-item p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .feature-item .image img {
+    width: 100%; /* Gambar memenuhi lebar kontainer */
+    aspect-ratio: 2 / 1; /* Mengatur rasio gambar menjadi 1.5:2 (atau 3:4) */
+    border-radius: 15px; /* Membuat sudut gambar melengkung */
+    object-fit: cover; /* Memastikan gambar sesuai dengan area tanpa distorsi */
+  }
+  
+  @media (max-width: 768px) {
+    .features {
+      grid-template-columns: 1fr;
+    }
+  
+    .feature-item {
+      grid-template-columns: 1fr;
+    }
+  
+    .feature-item .image {
+      margin-bottom: 20px;
+    }
+  }
+  
