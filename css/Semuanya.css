@@ -327,7 +327,7 @@ section.coming-soon form button {
 .speakers-thumb {
     position: relative;
     width: 100%; /* Lebar 100% dari kontainer atau kolom */
-    padding-top: 50%; /* Menetapkan tinggi menjadi 2 kali lebar (rasio 1:2) */
+    padding-top: 100%; /* Menetapkan tinggi menjadi 2 kali lebar (rasio 1:2) */
     overflow: hidden; /* Memastikan bagian gambar yang keluar kontainer terpotong */
 }
 
