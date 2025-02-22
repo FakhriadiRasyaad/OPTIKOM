@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splitter Calculator</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        table {
+            width: 70%;
+            margin: auto;
+            border-collapse: collapse;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #87CEFA;
+            color: black;
+            font-weight: bold;
+        }
+        input {
+            width: 80px;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    
+
+    <h2>Numerical Aperture Calculator</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Jarak</th>
+                <th>Diameter 1</th>
+                <th>Diameter 2</th>
+                <th>Diameter 3</th>
+                <th>Rata-rata Diameter</th>
+                <th>Numerical Aperture</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <script>
+                const data = [
+                    { type: "Single Mode", jarak: 5 },
+                    { type: "Single Mode", jarak: 9 },
+                    { type: "Single Mode", jarak: 13 },
+                    { type: "Multi Mode", jarak: 5 },
+                    { type: "Multi Mode", jarak: 9 },
+                    { type: "Multi Mode", jarak: 13 }
+                ];
+                data.forEach((row, index) => {
+                    document.write(`<tr>
+                        <td>${row.type}</td>
+                        <td>${row.jarak}</td>
+                        <td><input type="number" id="diameter1-${index}" oninput="calculate()"></td>
+                        <td><input type="number" id="diameter2-${index}" oninput="calculate()"></td>
+                        <td><input type="number" id="diameter3-${index}" oninput="calculate()"></td>
+                        <td id="avg-diameter-${index}"></td>
+                        <td id="na-${index}"></td>
+                    </tr>`);
+                });
+            </script>
+        </tbody>
+    </table>
+    <script>
+        function calculate() {
+            data.forEach((row, index) => {
+                let d1 = parseFloat(document.getElementById(`diameter1-${index}`).value) || 0;
+                let d2 = parseFloat(document.getElementById(`diameter2-${index}`).value) || 0;
+                let d3 = parseFloat(document.getElementById(`diameter3-${index}`).value) || 0;
+                let count = (d1 > 0 ? 1 : 0) + (d2 > 0 ? 1 : 0) + (d3 > 0 ? 1 : 0);
+                
+                let avgDiameter = count > 0 ? ((d1 + d2 + d3) / count).toFixed(2) : '';
+                document.getElementById(`avg-diameter-${index}`).innerText = avgDiameter;
+                
+                let s = row.jarak;
+                if (avgDiameter > 0) {
+                    let NA = Math.sin(Math.atan((avgDiameter / 2) / s)).toFixed(4);
+                    document.getElementById(`na-${index}`).innerText = NA;
+                } else {
+                    document.getElementById(`na-${index}`).innerText = '';
+                }
+            });
+        }
+    </script>
+
+    <h2>Splitter Calculator</h2>
+    <table id="splitter-table">
+        <thead>
+            <tr>
+                <th>Splitter</th>
+                <th>Nilai (dBm)</th>
+                <th>Convert ke Watt</th>
+                <th>Splitting Ratio</th>
+                <th>Performa (%)</th>
+            </tr>
+        </thead>
+        <tbody id="splitter-body">
+            <tr>
+                <td>PO</td>
+                <td><input type="number" class="p-value" oninput="calculateSplitter()"></td>
+                <td class="watt-value"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>P1</td>
+                <td><input type="number" class="p-value" oninput="calculateSplitter()"></td>
+                <td class="watt-value"></td>
+                <td class="splitting-ratio"></td>
+                <td class="performance"></td>
+                
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"><b>Sigma P1 - Pn</b></td>
+                <td id="sigma-watt">0</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+    <button class="button" onclick="addRow()">Tambah Baris</button>
+    
+    <h2>Excess Loss Calculation</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Excess Loss (Watt)</th>
+                <th>Excess Loss (dB)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="excess-loss-watt"></td>
+                <td id="excess-loss-db"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Insertion Loss Calculation</h2>
+    <table id="insertion-table">
+        <thead>
+            <tr>
+                <th>Insertion Loss</th>
+                <th>Insertion Loss (dB)</th>
+            </tr>
+        </thead>
+        <tbody id="insertion-body">
+        </tbody>
+    </table>
+    
+    <script>
+        function calculateSplitter() {
+            let pValues = document.querySelectorAll(".p-value");
+            let wattValues = document.querySelectorAll(".watt-value");
+            let splittingRatios = document.querySelectorAll(".splitting-ratio");
+            let performances = document.querySelectorAll(".performance");
+            let sigma = 0;
+            let poWatt = 0;
+            
+            pValues.forEach((input, index) => {
+                let dBm = parseFloat(input.value) || 0;
+                let watt = Math.pow(10, (dBm - 30) / 10);
+                wattValues[index].innerText = watt.toFixed(6);
+                if (index === 0) {
+                    poWatt = watt;
+                } else {
+                    sigma += watt;
+                }
+            });
+            
+            document.getElementById("sigma-watt").innerText = sigma.toFixed(6);
+            
+            pValues.forEach((input, index) => {
+                if (index > 0 && poWatt > 0) {
+                    let watt = parseFloat(wattValues[index].innerText) || 0;
+                    let ratio = watt / poWatt;
+                    let performance = ratio * 100;
+                    splittingRatios[index - 1].innerText = ratio.toFixed(4);
+                    performances[index - 1].innerText = performance.toFixed(2) + "%";
+                }
+            });
+            
+            if (sigma > 0 && poWatt > 0) {
+                let excessLossWatt = poWatt / sigma;
+                let excessLossDb = 10 * Math.log10(excessLossWatt);
+                document.getElementById("excess-loss-watt").innerText = excessLossWatt.toFixed(6);
+                document.getElementById("excess-loss-db").innerText = excessLossDb.toFixed(2) + " dB";
+            }
+
+            document.getElementById("insertion-body").innerHTML = "";
+            pValues.forEach((input, index) => {
+                if (index > 0 && poWatt > 0) {
+                    let watt = parseFloat(wattValues[index].innerText) || 0;
+                    let insertion = poWatt / watt;
+                    let insertionDb = 10 * Math.log10(insertion);
+                    let row = `<tr><td>${insertion.toFixed(6)}</td><td>${insertionDb.toFixed(2)} dB</td></tr>`;
+                    document.getElementById("insertion-body").innerHTML += row;
+                }
+            });
+        }
+        
+        function addRow() {
+            let table = document.getElementById("splitter-body");
+            let rowCount = table.rows.length;
+            let newIndex = rowCount;
+            
+            let row = table.insertRow();
+            let cellSplitter = row.insertCell(0);
+            let cellP = row.insertCell(1);
+            let cellWatt = row.insertCell(2);
+            let cellRatio = row.insertCell(3);
+            let cellPerformance = row.insertCell(4);
+            
+            cellSplitter.innerText = `P${newIndex - 0}`;
+            cellP.innerHTML = '<input type="number" class="p-value" oninput="calculateSplitter()">';
+            cellWatt.className = "watt-value";
+            cellRatio.className = "splitting-ratio";
+            cellPerformance.className = "performance";
+            
+            
+            calculateSplitter();
+        }
+        
+    </script>
+</body>
+</html>
