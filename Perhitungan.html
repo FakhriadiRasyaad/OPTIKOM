@@ -182,7 +182,7 @@
     <thead>
         <tr>
             <th>Insertion Loss</th>
-            <th>Insertion Loss (dB)</th>
+            <th>Insertion Loss (Kalikan dengan Minus)</th>
         </tr>
     </thead>
     <tbody id="insertion-body">
@@ -216,7 +216,7 @@
                 let watt = parseFloat(wattValues[index].innerText) || 0;
                 let ratio = watt / sigma;
                 let performance = ratio * 100;
-                splittingRatios[index - 1].innerText = ratio.toFixed(4);
+                splittingRatios[index - 1].innerText = ratio.toFixed(5);
                 performances[index - 1].innerText = performance.toFixed(2) + "%";
             }
         });
@@ -234,7 +234,7 @@
                 let watt = parseFloat(wattValues[index].innerText) || 0;
                 let insertion = poWatt / watt;
                 let insertionDb = 10 * Math.log10(insertion);
-                let row = `<tr><td>${insertion.toFixed(6)}</td><td>${insertionDb.toFixed(2)} dB</td></tr>`;
+                let row = `<tr>aa<td>${insertion.toFixed(6)}</td><td>${insertionDb.toFixed(2)} dB</td></tr>`;
                 document.getElementById("insertion-body").innerHTML += row;
             }
         });
