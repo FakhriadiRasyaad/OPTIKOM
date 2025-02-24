@@ -234,7 +234,7 @@
                 let watt = parseFloat(wattValues[index].innerText) || 0;
                 let insertion = poWatt / watt;
                 let insertionDb = 10 * Math.log10(insertion);
-                let row = `<tr>aa<td>${insertion.toFixed(6)}</td><td>${insertionDb.toFixed(2)} dB</td></tr>`;
+                let row = `<tr><td>${insertion.toFixed(6)}</td><td>${insertionDb.toFixed(2)} dB</td></tr>`;
                 document.getElementById("insertion-body").innerHTML += row;
             }
         });
